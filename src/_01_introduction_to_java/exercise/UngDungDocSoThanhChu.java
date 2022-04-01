@@ -3,105 +3,123 @@ package _01_introduction_to_java.exercise;
 import java.util.Scanner;
 
 public class UngDungDocSoThanhChu {
-    public static void main(String[] args) {
-        System.out.println(" Import number to read ");
-        Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
-        int units = number % 10; //Hàng đơn vị
-        int dozens = (number / 10) % 10; //Hàng trăm
-        int hundreds = number / 100; //Hàng chục
-        String number1 = ""; // tạo một biến chuỗi = giá trị rỗng
-        String number2 = "";
 
-        if (units > 0) {
-            //lấy hàng đơn vị
-            switch (units) {
-                case 1:
-                    number1 = " and one";
-                    break;
-                case 2:
-                    number1 = "two";
-                    break;
-                case 3:
-                    number1 = "three";
-                    break;
-                case 4:
-                    number1 = "four";
-                    break;
-                case 5:
-                    number1 = "five";
-                    break;
-                case 6:
-                    number1 = "six";
-                    break;
-                case 7:
-                    number1 = "seven";
-                    break;
-                case 8:
-                    number1 = "eight";
-                    break;
-                case 9:
-                    number1 = "nine";
-                    break;
-            }
+    static String read1To10(int number) {
+        String str = "";
+        switch(number) {
+            case 1:
+                str = "one";
+                break;
+            case 2:
+                str = "two";
+                break;
+            case 3:
+                str = "three";
+                break;
+            case 4:
+                str = "four";
+                break;
+            case 5:
+                str = "five";
+                break;
+            case 6:
+                str = "six";
+                break;
+            case 7:
+                str = "seven";
+                break;
+            case 8:
+                str = "eight";
+                break;
+            case 9:
+                str = "nine";
+                break;
+            case 10:
+                str = "ten";
+                break;
         }
-        if (dozens == 1) {
-            switch (units) {
-                case 0:
-                    number2 = "dozens";
-                    break;
-                case 1:
-                    number2 = "eleven";
-                    break;
-                case 2:
-                    number2 = "twelve";
-                    break;
-                case 3:
-                    number2 = "thirteen";
-                    break;
-                case 4:
-                    number2 = "fourteen";
-                    break;
-                case 5:
-                    number2 = "fifteen";
-                    break;
 
-            }
-        } else {
-            switch (dozens) {
-                case 2:
-                    number2 = "twenty";
-                    break;
-                case 3:
-                    number2 = "thirdty";
-                    break;
-                case 4:
-                    number2 = "fourty";
-                    break;
-                case 5:
-                    number2 = "fifty";
-                    break;
-                case 6:
-                    number2 = "sixty";
-                    break;
-                case 7:
-                    number2 = "seventy";
-                    break;
-                case 8:
-                    number2 = "eighty";
-                    break;
-                case 9:
-                    number2 = "ninety";
-                    break;
-            }
-        }
-        if (dozens == 1) {
-            System.out.println(number1 + number2 + "hundreds");
-        } else if (dozens != 1) {
-            System.out.println(number1 + "teen" );
-        }else if (hundreds > 1){
-            System.out.println();
-        }
+        return str;
     }
-}
 
+    static String read11to20(int number) {
+        String str = "";
+        switch (number) {
+            case 11:
+                str = "eleven";
+                break;
+            case 12:
+                str = "twelve";
+                break;
+            case 13:
+                str="thirteen";
+                break;
+
+            case 15:
+                str="fifteen";
+                break;
+            case 14:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+                str = read1To10(number%10) + "teen";
+        }
+
+        return str;
+    }
+    static String readTy(int number){
+        String str="";
+
+        switch (number){
+            case 20:
+                str="twenty";
+                break;
+            case 30:
+                str="thrity";
+                break;
+            case 50:
+                str="fifty";
+                break;
+            case 40:
+            case 60:
+            case 70:
+            case 80:
+            case 90:
+                str=read1To10((number%100)/10)+"ty";
+        }
+
+
+        return str;
+
+    }
+
+
+    public static String readOver100(int num){
+        String str="";
+        str=read1To10(num/100) +" hundred";
+        return str;
+    }
+
+    public static void main(String[] args) {
+
+        // INPUT
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please input number: ");
+        int number = scanner.nextInt();
+        String result="";
+        if (number>=1&&number<=10){
+            result=read1To10(number);
+        }else if (number<20){
+            result=read11to20(number);
+        }else if (number<100){
+            result=readTy((number/10)*10)+" "+read1To10(number%10);
+        }else if (number%100<20&& number%100>10){
+            result=readOver100((number/100)*100)+" " +read11to20(number%100);
+        }else {
+            result=readOver100((number/100)*100) + readTy(((number%100)/10)*10)+" "+read1To10(number%10);
+        }
+        System.out.println(result);
+    }
+
+}
