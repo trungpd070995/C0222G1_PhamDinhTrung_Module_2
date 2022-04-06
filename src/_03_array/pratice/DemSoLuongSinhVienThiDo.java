@@ -16,7 +16,7 @@ public class DemSoLuongSinhVienThiDo {
         array = new int[size];
         int i = 0;
         while (i < array.length) {
-            System.out.print("Enter a mark for student " + (i+ 1) + ": ");
+            System.out.print("Enter a mark for _05_access_modifier.pratice.student " + (i+ 1) + ": ");
             array[i] = scanner.nextInt();
             i++;
         }

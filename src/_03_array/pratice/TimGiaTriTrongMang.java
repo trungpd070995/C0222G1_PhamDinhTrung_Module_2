@@ -6,7 +6,7 @@ public class TimGiaTriTrongMang {
         public static void main(String[] args) {
             String[] students = {"Christian", "Michael", "Camila", "Sienna", "Tanya", "Connor", "Zachariah", "Mallory", "Zoe", "Emily"};
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter a name’s student:");
+            System.out.print("Enter a name’s _05_access_modifier.pratice.student:");
             String input_name = scanner.nextLine();
             boolean isExist = false;
             for (int i = 0; i < students.length; i++) {
