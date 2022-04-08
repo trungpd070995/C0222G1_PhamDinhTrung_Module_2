@@ -1,12 +1,14 @@
 package _05_access_modifier.exercise.build_write_only_classes;
 
-public class Student {
-    private String name, classes;
+public class Student{
+    private String name = "John";
+    private String classes = "C02";
 
-    public Student() {
-        this("John","C0222G1");
+
+    public Student(){
     }
-    public Student(String name,String classes){
+
+    public Student(String name, String classes){
         this.name = name;
         this.classes = classes;
     }
@@ -15,15 +17,15 @@ public class Student {
         return name;
     }
 
-    public String setName(String name) {
-        return this.name = name;
-    }
-
     public String getClasses() {
         return classes;
     }
 
-    public String setClasses(String classes) {
-        return this.classes = classes;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
     }
 }
