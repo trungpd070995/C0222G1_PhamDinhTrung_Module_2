@@ -11,6 +11,10 @@ public class TestStudent {
         arr[1] = new StudentMain("Dung", 26, "QTri", 9);
         arr[2] = new StudentMain("Hung", 25, "Hue", 8);
         arr[3] = new StudentMain("Nam", 24, "DNang", 7);
+        arr[4] = new StudentMain("Khanh", 23 , "QuangNam",6);
+        arr[5] = new StudentMain("Hoang", 22 ,"QuangNgai", 5);
+        arr[6] = new StudentMain("Hung", 21, "BinhDinh", 4);
+        arr[7] = new StudentMain("Tuan", 20, "NhaTrang", 3);
 
 
         System.out.println("Menu");
@@ -78,7 +82,5 @@ public class TestStudent {
 
         }
         display();
-
-
     }
 }
