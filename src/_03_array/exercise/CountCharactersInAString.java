@@ -1,21 +1,24 @@
 package _03_array.exercise;
 
 import java.util.Scanner;
-//Đếm ký tự trong một chuỗi
+/**Đếm ký tự trong một chuỗi*/
+
 public class CountCharactersInAString {
     public static void main(String[] args) {
-        String str;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập vào một chuỗi: ");
-        str = scanner.next();
-        System.out.println("Nhập vào một kí tự: ");
-        char n = scanner.next().charAt(0);
+        Scanner sc = new Scanner(System.in);
+        String str1 = "howareyou";
+        System.out.print("Nhập ký tự cần kiểm tra: ");
+        char symbols = sc.next().charAt(0);
+        System.out.println("Số lần xuất hiện của " + symbols + " là " + countCharacters(str1,symbols) );
+    }
+
+    public static int countCharacters(String str, char cha){
         int count = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == n) {
+        for (int i = 0; i < str.length() ; i++) {
+            if (str.charAt(i) == cha){
                 count++;
             }
         }
-        System.out.println("Số lần xuất hiện của kí tự trong chuỗi là: " + count);
+        return count;
     }
 }
