@@ -24,7 +24,7 @@ public class CheckPalindrome {
         }
 
         String displayPalindrome = "";
-        
+
         while(!queue.isEmpty()) {
             if ((queue.remove().equals(stack.pop()))) {
                 displayPalindrome = "Đây là chuỗi Palindrome";
