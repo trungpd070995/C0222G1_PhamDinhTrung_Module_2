@@ -8,8 +8,8 @@ import java.util.Queue;
 public class MainQueByGender {
     public static void main(String[] args) {
         /**Phương thức tạo 2 Queue rỗng*/
-        Queue<QueueByGender> NAM = new LinkedList<>();
-        Queue<QueueByGender> NU = new LinkedList<>();
+        Queue<QueueByGender> male = new LinkedList<>();
+        Queue<QueueByGender> falmale = new LinkedList<>();
 
         /**Phương thức khởi tạo đối tượng khách hàng mới*/
         QueueByGender[] customers = new QueueByGender[5];
@@ -21,23 +21,23 @@ public class MainQueByGender {
         /**Duyệt phần tử , add vào mảng */
         for (QueueByGender arr : customers) {
             if (arr.isGender()) {
-                /**Kiểm tra nếu là giời tính NAM => add vào Queue NAM*/
-                NAM.add(arr);
+                /**Kiểm tra nếu là giời tính male => add vào Queue male*/
+                male.add(arr);
             } else {
-                /**Kiểm tra nếu là giời tính NU => add vào Queue NU*/
-                NU.add(arr);
+                /**Kiểm tra nếu là giời tính falmale => add vào Queue falmale*/
+                falmale.add(arr);
             }
         }
         List<QueueByGender> lists = new ArrayList<>();
 
-        /**Phương thức xét Queue NU, khi queue chưa rỗng*/
-        while (NU.size() > 0) {
-            lists.add(NU.remove());
+        /**Phương thức xét Queue falmale, khi queue chưa rỗng*/
+        while (falmale.size() > 0) {
+            lists.add(falmale.remove());
         }
 
-        /**Phương thức xét Queue NAM, khi queue chưa rỗng*/
-        while (NAM.size() > 0) {
-            lists.add(NAM.remove());
+        /**Phương thức xét Queue male, khi queue chưa rỗng*/
+        while (male.size() > 0) {
+            lists.add(male.remove());
         }
         System.out.println("List after sorting: ");
         for (QueueByGender item : lists) {

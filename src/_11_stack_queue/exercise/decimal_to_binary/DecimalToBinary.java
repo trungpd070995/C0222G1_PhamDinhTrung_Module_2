@@ -15,7 +15,7 @@ public class DecimalToBinary {
             decimal = decimal / 2;
 
         }
-        while (!(stack.isEmpty())) {
+        while (!stack.isEmpty()) {
             System.out.print(stack.pop());
 
         }

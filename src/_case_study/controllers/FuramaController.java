@@ -29,6 +29,9 @@ public class FuramaController {
                 case 3:
                     displayFacilityMenu();
                     break;
+                case 4:
+                    displayBookingMenu();
+                    break;
 
             }
         }
@@ -81,5 +84,22 @@ public class FuramaController {
             }
         }
 
+    }
+
+    public static void displayBookingMenu(){
+        boolean check = true;
+        while (check){
+            System.out.println("1. Add new booking ");
+            System.out.println("2. Dispay list booking ");
+            System.out.println("3. Create new constracs ");
+            System.out.println("4. Dispay list constracs");
+            System.out.println("5. Edit contracts ");
+            System.out.println("6. Return main menu ");
+            Scanner scanner = new Scanner(System.in);
+            switch (scanner.nextInt()){
+                case 4:
+                    break;
+            }
+        }
     }
 }
