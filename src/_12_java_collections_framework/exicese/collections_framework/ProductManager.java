@@ -1,13 +1,20 @@
 package _12_java_collections_framework.exicese.collections_framework;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ProductManager {
     Scanner sc = new Scanner(System.in);
-    ArrayList<Product> productArrayList = new ArrayList<>();
+    static ArrayList<Product> productArrayList = new ArrayList<>();
     SortUp sortUp = new SortUp();
     SortDown sortDown = new SortDown();
+    static {
+        productArrayList.add(new Product(1, "OMO", 40000,7));
+        productArrayList.add(new Product(2, "COCA", 12000,6));
+        productArrayList.add(new Product(3, "PIZZA", 20000,9));
+        productArrayList.add(new Product(4, "ORANGE", 35000,8));
+    }
 
     public void add() {
         System.out.println("Nhập id của sản phẩm");
@@ -64,30 +71,35 @@ public class ProductManager {
 
     public void search() {
         System.out.println("Nhập tên sản phẩm cần tìm kiếm");
-        boolean exist = false;
-        Product product = null;
+//        boolean exist = false;
+//        Product product = null;
         String name = sc.nextLine();
-        for (int i = 0; i < productArrayList.size(); i++) {
-            if (productArrayList.get(i).getNameProduct().equals(name)) {
-                product = productArrayList.get(i);
-                exist = true;
+//        for (int i = 0; i < productArrayList.size(); i++) {
+//            if (productArrayList.get(i).getNameProduct().equals(name)) {
+//                product = productArrayList.get(i);
+//                exist = true;
+//            }
+//        }
+//        if (exist) {
+//            System.out.println(product);
+//        } else {
+//            System.out.println("Không tồn tại phần tử này");
+//        }
+        for (Product item : productArrayList) {
+            if (item.getNameProduct().contains(name)) {
+                System.out.println(item);
+                break;
             }
-        }
-        if (exist) {
-            System.out.println(product);
-        } else {
-            System.out.println("Không tồn tại phần tử này");
         }
     }
 
-    public void sortUp() {
-        productArrayList.sort(sortUp);
-
+    public void sortUpAscending() {
+        Collections.sort(productArrayList, new SortUp());
         this.showAll();
     }
 
-    public void sortDown() {
-        productArrayList.sort(sortDown);
+    public void sortDescending() {
+        Collections.sort(productArrayList, new SortDown());
         this.showAll();
     }
 }

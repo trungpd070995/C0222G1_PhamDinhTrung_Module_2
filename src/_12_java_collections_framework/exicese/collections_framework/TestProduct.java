@@ -7,7 +7,7 @@ public class TestProduct {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ProductManager productManager = new ProductManager();
-        ArrayList<Product> products = productManager.productArrayList;
+        ArrayList<Product> products = ProductManager.productArrayList;
         int choice;
         do {
             System.out.println("Menu sản phẩm.\n" +
@@ -37,10 +37,10 @@ public class TestProduct {
                     productManager.search();
                     break;
                 case 6:
-                    productManager.sortUp();
+                    productManager.sortUpAscending();
                     break;
                 case 7:
-                    productManager.sortDown();
+                    productManager.sortDescending();
                     break;
                 case 0:
                     break;
