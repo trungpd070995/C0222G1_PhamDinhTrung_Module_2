@@ -7,10 +7,8 @@ import java.util.Scanner;
 public class ProductManager {
     Scanner sc = new Scanner(System.in);
     static ArrayList<Product> productArrayList = new ArrayList<>();
-    SortUp sortUp = new SortUp();
-    SortDown sortDown = new SortDown();
     static {
-        productArrayList.add(new Product(1, "OMO", 40000,7));
+        productArrayList.add(new Product(1, "REDBULL", 40000,7));
         productArrayList.add(new Product(2, "COCA", 12000,6));
         productArrayList.add(new Product(3, "PIZZA", 20000,9));
         productArrayList.add(new Product(4, "ORANGE", 35000,8));

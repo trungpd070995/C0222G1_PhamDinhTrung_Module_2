@@ -17,30 +17,37 @@ public class Product {
     }
 
     public int getIdProduct() {
+
         return idProduct;
     }
 
     public void setIdProduct(int idProduct) {
+
         this.idProduct = idProduct;
     }
 
     public String getNameProduct() {
+
         return nameProduct;
     }
 
     public double getPrice() {
+
         return price;
     }
 
     public void setPrice(double price) {
+
         this.price = price;
     }
 
     public void setNameProduct(String nameProduct) {
+
         this.nameProduct = nameProduct;
     }
 
     public int getQuantity() {
+
         return quantity;
     }
 
