@@ -1,4 +1,4 @@
-package _17_binary_file_serialization.pratice.product_manager;
+package _17_binary_file_serialization.exercise.product_managerment;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class ProductManager {
         String discription = input.nextLine();
         Product product1 = new Product(id, name, manufacturer, price, discription);
         listProduct.add(product1);
-        writeToFile("src\\_17_binary_file_serialization\\pratice\\product_manager\\sanpham.txt", listProduct);
+        writeToFile("src\\_17_binary_file_serialization\\exercise\\product_managerment\\sanpham.txt", listProduct);
         display(listProduct);
     }
 
@@ -52,7 +52,7 @@ public class ProductManager {
     }
 
     public static void display(ArrayList<Product> listProduct) {
-        readDataFromFile("src\\_17_binary_file_serialization\\pratice\\product_manager\\sanpham.txt");
+        readDataFromFile("src\\_17_binary_file_serialization\\exercise\\product_managerment\\sanpham.txt");
         for (Product product : listProduct) {
             System.out.println(product);
         }
@@ -61,7 +61,7 @@ public class ProductManager {
     static void search(ArrayList<Product> listProduct) {
         System.out.println("Nhập tên sản phẩm bạn muốn tìm kiếm");
         String name = input.next();
-        readDataFromFile("src\\_17_binary_file_serialization\\pratice\\product_manager\\sanpham.txt");
+        readDataFromFile("src\\_17_binary_file_serialization\\exercise\\product_managerment\\sanpham.txt");
         for (Product product : listProduct) {
             if (product.getName().equals(name)) {
                 System.out.println("Thông tin sản phẩn cần tìm: " + product);

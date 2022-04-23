@@ -14,6 +14,9 @@ public class ProductManager {
         productArrayList.add(new Product(4, "ORANGE", 35000,8));
     }
 
+    public void display(ArrayList<_17_binary_file_serialization.exercise.product_managerment.Product> listProduct) {
+    }
+
     public void add() {
         System.out.println("Nhập id của sản phẩm");
         int id = Integer.parseInt(sc.nextLine());
@@ -99,5 +102,8 @@ public class ProductManager {
     public void sortDescending() {
         Collections.sort(productArrayList, new SortDown());
         this.showAll();
+    }
+
+    public void addNewProduct() {
     }
 }

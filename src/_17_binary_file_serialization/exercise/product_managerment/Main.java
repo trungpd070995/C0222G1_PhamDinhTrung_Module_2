@@ -1,4 +1,4 @@
-package _17_binary_file_serialization.pratice.product_manager;
+package _17_binary_file_serialization.exercise.product_managerment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +14,12 @@ public class Main {
         listProduct.add(new Product(5, "Siaomi", "Siaomi", 15000000, "Màu đen"));
 
         while (true) {
-            System.out.println("QUẢN LÝ SẢN PHẨM: \n" +
-                    "Vui lòng chọn 1 trong các chức năng sau: \n" +
-                    "1. Thêm sản phẩm \n" +
-                    "2. Hiển thị danh sách sản phẩm \n" +
-                    "3. Tìm kiếm sản phẩm \n" +
-                    "4. Thoát chương trình");
+            System.out.println("QUẢN LÝ SẢN PHẨM:");
+            System.out.println("1. Thêm sản phẩm");
+            System.out.println("2. Hiển thị sản phẩm");
+            System.out.println("3. Tìm kiếm sản phẩm");
+            System.out.println("4. Thoát chương trình");
+
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
             switch (choice) {

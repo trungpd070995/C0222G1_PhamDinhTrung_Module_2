@@ -1,8 +1,10 @@
 package _17_binary_file_serialization.pratice.read_write;
 
+import _case_study.models.Person;
+
 import java.io.Serializable;
 
-public class Student implements Serializable {
+public class Student extends Person implements Serializable {
     private int id;
 
     private String name;
