@@ -6,12 +6,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        String path = "src\\_17_binary_file_serialization\\exercise\\product_managerment\\sanpham.txt";
         List<Product> listProduct = new ArrayList<>();
         listProduct.add(new Product(1, "Samsung", "Samsung", 20000000, "Màu đỏ"));
         listProduct.add(new Product(2, "Galaxy", "Samsung", 30000000, "Màu xanh"));
         listProduct.add(new Product(3, "Iphone", "Iphone", 35000000, "Màu trắng"));
         listProduct.add(new Product(4, "Oppo", "Oppo", 25000000, "Màu hồng"));
         listProduct.add(new Product(5, "Siaomi", "Siaomi", 15000000, "Màu đen"));
+        ProductManager.writeToFile(path, listProduct);
 
         while (true) {
             System.out.println("QUẢN LÝ SẢN PHẨM:");
@@ -24,13 +26,13 @@ public class Main {
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
-                    ProductManager.add((ArrayList<Product>) listProduct);
+                    ProductManager.add(path);
                     break;
                 case 2:
-                    ProductManager.display((ArrayList<Product>) listProduct);
+                    ProductManager.display(path);
                     break;
                 case 3:
-                    ProductManager.search((ArrayList<Product>) listProduct);
+                    ProductManager.search(path);
                     break;
                 case 4:
                     System.exit(0);

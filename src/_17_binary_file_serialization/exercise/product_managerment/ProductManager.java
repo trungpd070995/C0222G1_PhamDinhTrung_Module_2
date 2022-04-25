@@ -20,7 +20,7 @@ public class ProductManager {
         }
     }
 
-    static void add(ArrayList<Product> listProduct) {
+    static void add(String path) {
         System.out.println("Nhập mã của sản phẩm: ");
         int id = Integer.parseInt(input.nextLine());
         System.out.println("Nhập tên sản phẩm: ");
@@ -32,9 +32,11 @@ public class ProductManager {
         System.out.println("Miêu tả sản phẩm: ");
         String discription = input.nextLine();
         Product product1 = new Product(id, name, manufacturer, price, discription);
-        listProduct.add(product1);
-        writeToFile("src\\_17_binary_file_serialization\\exercise\\product_managerment\\sanpham.txt", listProduct);
-        display(listProduct);
+
+        List<Product> productList = readDataFromFile(path);
+        productList.add(product1);
+        writeToFile(path, productList);
+        display(path);
     }
 
     public static List<Product> readDataFromFile(String path) {
@@ -51,21 +53,20 @@ public class ProductManager {
         return listProduct;
     }
 
-    public static void display(ArrayList<Product> listProduct) {
-        readDataFromFile("src\\_17_binary_file_serialization\\exercise\\product_managerment\\sanpham.txt");
-        for (Product product : listProduct) {
+    public static void display(String path) {
+        List<Product> productList =readDataFromFile(path);
+        for (Product product : productList) {
             System.out.println(product);
         }
     }
 
-    static void search(ArrayList<Product> listProduct) {
+    static void search(String path) {
         System.out.println("Nhập tên sản phẩm bạn muốn tìm kiếm");
         String name = input.next();
-        readDataFromFile("src\\_17_binary_file_serialization\\exercise\\product_managerment\\sanpham.txt");
-        for (Product product : listProduct) {
-            if (product.getName().equals(name)) {
+        List<Product> productList = readDataFromFile(path);
+        for (Product product : productList) {
+            if (product.getName().contains(name)) {
                 System.out.println("Thông tin sản phẩn cần tìm: " + product);
-                return;
             }
         }
         System.out.println("Sản phẩm không có trong danh sách");
