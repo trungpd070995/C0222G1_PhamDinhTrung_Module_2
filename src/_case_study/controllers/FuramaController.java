@@ -32,6 +32,12 @@ public class FuramaController {
                 case 4:
                     displayBookingMenu();
                     break;
+                case 5:
+                    displayPromotionMenu();
+                    break;
+                default:
+                    System.out.println("vui long chon lai");
+                    break;
 
             }
         }
@@ -100,6 +106,15 @@ public class FuramaController {
                 case 4:
                     break;
             }
+        }
+    }
+
+    public static void displayPromotionMenu(){
+        boolean check = true;
+        while (check){
+            System.out.println("1. Display list customers use service");
+            System.out.println("1. Display list customers get voucher");
+            System.out.println("1. Return main menu");
         }
     }
 }

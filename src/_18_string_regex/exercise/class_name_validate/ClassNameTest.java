@@ -9,11 +9,11 @@ public class ClassNameTest {
         ClassName className = new ClassName();
         for (String className1 : validClassName) {
             boolean isvalid = className.validate(className1);
-            System.out.println("Class name is " + className + " is valid: " + isvalid);
+            System.out.println("Class name is " + className1 + " is valid: " + isvalid);
         }
         for (String className1 : invalidClassName) {
             boolean isvalid = className.validate(className1);
-            System.out.println("Class name is " + className + " is valid: " + isvalid);
+            System.out.println("Class name is " + className1 + " is valid: " + isvalid);
         }
     }
 }
