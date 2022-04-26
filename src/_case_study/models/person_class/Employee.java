@@ -1,4 +1,4 @@
-package _case_study.person_class;
+package _case_study.models.person_class;
 
 public class Employee extends Person {
     private String level;
@@ -50,5 +50,3 @@ public class Employee extends Person {
                 '}';
     }
 }
-
-

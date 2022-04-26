@@ -1,6 +1,6 @@
 package _17_binary_file_serialization.pratice.read_write;
 
-import _case_study.person_class.Person;
+import _case_study.models.person_class.Person;
 
 import java.io.Serializable;
 

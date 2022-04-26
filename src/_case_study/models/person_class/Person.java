@@ -1,4 +1,4 @@
-package _case_study.person_class;
+package _case_study.models.person_class;
 
 public abstract class Person {
     private int id;

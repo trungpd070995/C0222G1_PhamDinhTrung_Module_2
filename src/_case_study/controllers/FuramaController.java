@@ -1,5 +1,8 @@
 package _case_study.controllers;
 
+import _case_study.service.impl.CustomerSeviceImpl;
+import _case_study.service.impl.EmployeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
@@ -36,7 +39,7 @@ public class FuramaController {
                     displayPromotionMenu();
                     break;
                 default:
-                    System.out.println("vui long chon lai");
+                    System.out.println("Vui lòng chọn lại1");
                     break;
 
             }
@@ -45,6 +48,7 @@ public class FuramaController {
 
 
     public static void displayEmployeeMenu() {
+        EmployeServiceImpl employeService = new EmployeServiceImpl();
         boolean check = true;
         while (check) {
             System.out.println("1. Display list employees ");
@@ -54,14 +58,20 @@ public class FuramaController {
             Scanner scanner = new Scanner(System.in);
 
             switch (scanner.nextInt()) {
-                case 1:
+                case 1: {
+                    employeService.display();
                     break;
+                }
+                case 2: {
+                    employeService.addNew();
+                }
             }
 
         }
     }
 
     public static void displayCustomerMenu() {
+        CustomerSeviceImpl customerSevice = new CustomerSeviceImpl();
         boolean check = true;
         while (check) {
             System.out.println("1. Display list customers ");
@@ -70,8 +80,13 @@ public class FuramaController {
             System.out.println("4. Return main menu ");
             Scanner scanner = new Scanner(System.in);
             switch (scanner.nextInt()) {
-                case 2:
-                    break;
+                case 1:{
+                    customerSevice.display();
+                }
+                case 2:{
+                    customerSevice.addNew();
+                }
+
             }
         }
     }
@@ -85,8 +100,9 @@ public class FuramaController {
             System.out.println("4. Return main menu ");
             Scanner scanner = new Scanner(System.in);
             switch (scanner.nextInt()) {
-                case 3:
-                    break;
+                case 1:{
+                    
+                }
             }
         }
 
