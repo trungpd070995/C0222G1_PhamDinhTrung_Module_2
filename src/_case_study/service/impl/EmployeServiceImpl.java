@@ -37,7 +37,7 @@ public class EmployeServiceImpl implements EmployeeService {
         System.out.println("Nhập giới tính : ");
         String gender = scanner.nextLine();
 
-        System.out.println("Nhập cấp độ : ");
+        System.out.println("Nhập trình độ : ");
         String level = scanner.nextLine();
 
         System.out.println("Nhập chức vụ : ");
