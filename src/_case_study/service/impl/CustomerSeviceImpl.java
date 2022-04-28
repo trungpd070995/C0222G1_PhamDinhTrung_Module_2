@@ -43,18 +43,48 @@ public class CustomerSeviceImpl implements CustomerService {
         System.out.println("Nhập căn cước công dân : ");
         String idCar = scanner.nextLine();
 
-        Customer customer = new Customer(id,name,age,address,gender,typeCustomer,idCar);
+        Customer customer = new Customer(id, name, age, address, gender, typeCustomer, idCar);
         customerList.add(customer);
         System.out.println("Đã thêm mới khách hàng!");
     }
 
     @Override
     public void edit() {
+        System.out.println("Nhập vào id của khách hàng cần chỉnh sửa");
+        int id = Integer.parseInt(scanner.nextLine());
+        for (Customer customer : customerList) {
+            if (id == customer.getId()) {
+                System.out.println("Nhập id : ");
+                customer.setId(Integer.parseInt(scanner.nextLine()));
 
+                System.out.println("Nhập tên : ");
+                customer.setName(scanner.nextLine());
+
+                System.out.println("Nhập tuổi : ");
+                customer.setAge(Integer.parseInt(scanner.nextLine()));
+
+                System.out.println("Nhập địa chỉ : ");
+                customer.setAddress(scanner.nextLine());
+
+                System.out.println("Nhập giới tính : ");
+                customer.setGender(scanner.nextLine());
+
+                System.out.println("Nhập loại khách hàng : ");
+                customer.setTypeCustomer(scanner.nextLine());
+
+                System.out.println("Nhập căn cước công dân : ");
+                customer.setIdCar(scanner.nextLine());
+
+
+                System.out.println("Đã chỉnh sửa thông tin khách hàng");
+            }
+        }
     }
 
     @Override
     public void delete() {
-
+        System.out.println("Nhập vào id của khách hàng cần chỉnh sửa");
+        int id = scanner.nextInt();
+        customerList.removeIf(customer -> id == customer.getId());
     }
 }

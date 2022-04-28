@@ -53,6 +53,38 @@ public class EmployeServiceImpl implements EmployeeService {
 
     @Override
     public void edit() {
+        System.out.println("Nhập vào mã khách hàng cần chỉnh sửa :");
+        int id = Integer.parseInt(scanner.nextLine());
+        for (Employee employee : employeeList) {
+            if (id == employee.getId()) {
+                System.out.println("Nhập id : ");
+                employee.setId(Integer.parseInt(scanner.nextLine()));
+
+                System.out.println("Nhập tên : ");
+                employee.setName(scanner.nextLine());
+
+                System.out.println("Nhập tuổi : ");
+                employee.setAge(Integer.parseInt(scanner.nextLine()));
+
+                System.out.println("Nhập địa chỉ : ");
+                employee.setAddress(scanner.nextLine());
+
+                System.out.println("Nhập giới tính : ");
+                employee.setGender(scanner.nextLine());
+
+                System.out.println("Nhập trình độ : ");
+                employee.setLevel(scanner.nextLine());
+
+                System.out.println("Nhập chức vụ : ");
+                employee.setPosition(scanner.nextLine());
+
+                System.out.println("Nhập lương : ");
+                employee.setSalary(Integer.parseInt(scanner.nextLine()));
+
+                System.out.println("Đã chỉnh sửa thành công!");
+            }
+
+        }
 
     }
 

@@ -24,10 +24,25 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void display() {
-        for (Map.Entry<Facility,Integer> element : facitityIntegerMap.entrySet()) {
+        for (Map.Entry<Facility, Integer> element : facitityIntegerMap.entrySet()) {
             System.out.println("Service" + "" + element + " Số lần đã thuê: " + element.getValue());
 
         }
+
+    }
+
+    @Override
+    public void addNew() {
+
+    }
+
+    @Override
+    public void edit() {
+
+    }
+
+    @Override
+    public void delete() {
 
     }
 
@@ -38,7 +53,7 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void addNewVilla() {
-        System.out.println("Nhập Id: ");
+        System.out.println("Nhập tên dịch vụ: ");
         String serviceName = scanner.nextLine();
 
         System.out.println("Diện tích sử dụng : ");
@@ -62,21 +77,22 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Số tầng : ");
         int floor = Integer.parseInt(scanner.nextLine());
 
-        Villa villa = new Villa(serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, standardVilla, areaPool,floor);
+        Villa villa = new Villa(serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, standardVilla, areaPool, floor);
         facitityIntegerMap.put(villa, 0);
         System.out.println("Đã thêm mới thành công!");
 
     }
-    private String inputId(){
+
+    private String inputId() {
         System.out.println("Nhap Id : ");
-        return RegexData.regexStr(scanner.nextLine(),REGEX_ID_VILLA,"Bạn đã nhập sai định dạng, mã dịch vụ SVVL-XXXX");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_ID_VILLA, "Bạn đã nhập sai định dạng, mã dịch vụ SVVL-XXXX");
     }
 
 
     @Override
     public void addNewHouse() {
 
-        System.out.println("Tên House: ");
+        System.out.println("Tên dịch vụ: ");
         String serviceName = scanner.nextLine();
 
         System.out.println("Diện tích sử dụng : ");
@@ -97,15 +113,15 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Số tầng : ");
         int floorHouse = Integer.parseInt(scanner.nextLine());
 
-        House house = new House(serviceName,areaUse,rentanlPrice,rentalPeopleMax,styleRental,standardHouse,floorHouse);
-        facitityIntegerMap.put(house,0);
+        House house = new House(serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, standardHouse, floorHouse);
+        facitityIntegerMap.put(house, 0);
         System.out.println("Đã thêm mới thành công!");
 
     }
 
     @Override
     public void addNewRoom() {
-        System.out.println("Tên House: ");
+        System.out.println("Tên dịch vụ: ");
         String serviceName = scanner.nextLine();
 
         System.out.println("Diện tích sử dụng : ");
@@ -123,8 +139,8 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Tiêu chuẩn phòng : ");
         String freeService = scanner.nextLine();
 
-        Room room = new Room(serviceName,areaUse,rentanlPrice,rentalPeopleMax,styleRental,freeService);
-        facitityIntegerMap.put(room,0);
+        Room room = new Room(serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, freeService);
+        facitityIntegerMap.put(room, 0);
         System.out.println("Đã thêm mới thành công!");
 
     }
