@@ -3,14 +3,14 @@ package _case_study.models.person_class;
 public abstract class Person {
     private int id;
     private String name;
-    private int age;
+    private String dateOfBirth;
     private String address;
     private String gender;
 
-    public Person(int id, String name, int age, String address, String gender) {
+    public Person(int id, String name, String dateOfBirth, String address, String gender) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.gender = gender;
     }
@@ -42,12 +42,12 @@ public abstract class Person {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getAddress() {
@@ -63,9 +63,13 @@ public abstract class Person {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + age +
+                ", age=" + dateOfBirth +
                 ", address='" + address + '\'' +
                 ", gender='" + gender + '\'' +
                 '}';
+    }
+
+    public String getInfoEmployToCSV(){
+        return this.getId() + "," + this.getName() + "," + this.getDateOfBirth() + "," + this.getGender() + "," + this.getAddress();
     }
 }

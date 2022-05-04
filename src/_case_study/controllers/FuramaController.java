@@ -4,16 +4,17 @@ import _case_study.service.impl.CustomerSeviceImpl;
 import _case_study.service.impl.EmployeServiceImpl;
 import _case_study.service.impl.FacilityServiceImpl;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FuramaController {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         displayMainMenu();
     }
 
 
-    public static void displayMainMenu() {
+    public static void displayMainMenu() throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("-----Please select Options!------");
         while (true) {
@@ -52,10 +53,9 @@ public class FuramaController {
     }
 
 
-    public static void displayEmployeeMenu() {
+    public static void displayEmployeeMenu() throws FileNotFoundException {
         EmployeServiceImpl employeService = new EmployeServiceImpl();
         Scanner scanner = new Scanner(System.in);
-        boolean flag = true;
 
         while (true) {
             System.out.println("1. Display list employees ");
@@ -78,9 +78,9 @@ public class FuramaController {
                     break;
                 }
                 case 4: {
-                    flag = true;
+                    return;
                 }
-                break;
+
             }
 
         }
@@ -110,15 +110,14 @@ public class FuramaController {
                     break;
                 }
                 case 4: {
-                    displayMainMenu();
-                    break;
+                   return;
                 }
 
             }
         }
     }
 
-    public static void displayFacilityMenu() {
+    public static void displayFacilityMenu() throws FileNotFoundException {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         Scanner scanner = new Scanner(System.in);
 
@@ -137,15 +136,19 @@ public class FuramaController {
                     addNewFacilityMenu();
                     break;
                 }
+                case 3: {
+                    facilityService.displayMaintain();
+                    break;
+                }
                 case 4: {
-                    displayMainMenu();
+                    return;
                 }
             }
         }
 
     }
 
-    public static void addNewFacilityMenu() {
+    public static void addNewFacilityMenu() throws FileNotFoundException {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;

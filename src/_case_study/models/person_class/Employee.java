@@ -1,6 +1,8 @@
 package _case_study.models.person_class;
 
-public class Employee extends Person {
+import java.io.Serializable;
+
+public class Employee extends Person implements Serializable {
     private String level;
     private String position;
     private int salary;
@@ -9,11 +11,14 @@ public class Employee extends Person {
     }
 
 
-    public Employee(int id, String name, int age, String address, String gender, String level, String position, int salary) {
+    public Employee(int id, String name, String age, String address, String gender, String level, String position, int salary) {
         super(id, name, age, address, gender);
         this.level = level;
         this.position = position;
         this.salary = salary;
+    }
+
+    public Employee(String s, String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8, String s9) {
     }
 
     public String getLevel() {
@@ -32,7 +37,7 @@ public class Employee extends Person {
         this.position = position;
     }
 
-    public int getSalary() {
+    public int getSalary(String employeeSalary) {
         return salary;
     }
 

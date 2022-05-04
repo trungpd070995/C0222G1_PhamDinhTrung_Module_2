@@ -7,42 +7,30 @@ import _case_study.models.facility_class.Villa;
 import _case_study.service.FacilityService;
 import _case_study.ultis.RegexData;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
 
-    public static final String REGEX_STR = "^[A-Z][a-z]+";
-    public static final String REGEX_ID_VILLA = "(SVVL)[-][\\d]{4}";
-    public static final String REGEX_AMOUNT = "^[1-9]|([1][0-9])|(20)$";
-    public static final String REGEX_AREA = "^([3-9]\\d|[1-9]\\d{2})$";
-
-
     private static Map<Facility, Integer> facitityIntegerMap = new LinkedHashMap<>();
-    private static Scanner scanner = new Scanner(System.in);
+    private static List<Villa> villaList = new ArrayList<>();
+    private static List<House> houseList = new ArrayList<>();
+    private static List<Room> roomList = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+
+    public static final String REGEX_TYPE_NAME_STANDAR = "[A-Z][a-z]+"; //Kiểu chuẩn hoá tiêu chuẩn
+    public static final String REGEX_ID_VILLA = "(SVVL)[-][\\d]{4}";
+    public static final String REGEX_ID_HOUSE = "^(SVHO)[-][0-9]{4}$";
+    public static final String REGEX_ID_ROOM = "^(SVRO)[-][0-9]{4}$";
+    public static final String REGEX_AMOUNT_MAXIMUM_QUANTITY = "^[1-9]|([1][0-9])|(20)$"; //Số lượng tối đa
+    public static final String REGEX_AREA_POOL_AND_AREA_USE = "^([3-9]\\d|[1-9]\\d{2})$"; //Diện tích sử dựng
+    public static final String REGEX_FLOORS = "[1-9][0-9]*";
+    public static final String REGEX_COST = "[1-9][0-9]*"; //Chi phí
 
     @Override
     public void display() {
         for (Map.Entry<Facility, Integer> element : facitityIntegerMap.entrySet()) {
-            System.out.println("Service" + "" + element + " Số lần đã thuê: " + element.getValue());
-
+            System.out.println("Service" + "" + element.getKey().toString() + " Số lần đã thuê: " + element.getValue());
         }
-
-    }
-
-    @Override
-    public void addNew() {
-
-    }
-
-    @Override
-    public void edit() {
-
-    }
-
-    @Override
-    public void delete() {
 
     }
 
@@ -51,97 +39,147 @@ public class FacilityServiceImpl implements FacilityService {
 
     }
 
+
     @Override
     public void addNewVilla() {
-        System.out.println("Nhập tên dịch vụ: ");
-        String serviceName = scanner.nextLine();
 
-        System.out.println("Diện tích sử dụng : ");
-        double areaUse = Double.parseDouble(scanner.nextLine());
+        String id = inputIdVilla(); // id
 
-        System.out.println("Chi phí thuê : ");
-        int rentanlPrice = Integer.parseInt(scanner.nextLine());
+        String serviceName = inputServiceName(); // Tên dịch vụ
 
-        System.out.println("Số lượng người tối đa : ");
-        int rentalPeopleMax = Integer.parseInt(scanner.nextLine());
+        double areaUse = Double.parseDouble(inputAreaUse()); //Diện tích sử dụng
 
-        System.out.println("Kiểu thuê : ");
-        String styleRental = scanner.nextLine();
+        int rentanlPrice = Integer.parseInt(inputRentalPrice()); //Chi phí thuê
 
-        System.out.println("Tiêu chuẩn phòng : ");
-        String standardVilla = scanner.nextLine();
+        int rentalPeopleMax = Integer.parseInt(inputRentalPeopleMax());//Số lượng người tối đa
 
-        System.out.println("Diện tích hồ bơi : ");
-        double areaPool = Double.parseDouble(scanner.nextLine());
 
-        System.out.println("Số tầng : ");
-        int floor = Integer.parseInt(scanner.nextLine());
+        String styleRental = inputStyleRental(); //Kiểu thuê
 
-        Villa villa = new Villa(serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, standardVilla, areaPool, floor);
+        String standardVilla = inputStandar(); //Tiêu chuẩn phòng
+
+        double areaPool = Double.parseDouble(inputAreaPool()); // Diện tích hồ bơi
+
+        int floor = Integer.parseInt(inputFloor()); // Số tầng
+
+        Villa villa = new Villa(id, serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, standardVilla, areaPool, floor);
+
+        villaList.add(villa);
         facitityIntegerMap.put(villa, 0);
+
         System.out.println("Đã thêm mới thành công!");
 
     }
 
-    private String inputId() {
-        System.out.println("Nhap Id : ");
+    private String inputIdVilla() {
+        System.out.println("Nhập ID Villa : ");
         return RegexData.regexStr(scanner.nextLine(), REGEX_ID_VILLA, "Bạn đã nhập sai định dạng, mã dịch vụ SVVL-XXXX");
     }
 
+    private String inputIdHouse() {
+        System.out.println("Nhập ID House : ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_ID_HOUSE, "Bạn đã nhập sai định dạng, mã dịch vụ SVHO-XXXX");
+    }
+
+    private String inputIdRoom() {
+        System.out.println("Nhập ID Room : ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_ID_ROOM, "Bạn đã nhập sai định dạng, mã dịch vụ SVRO-XXXX");
+    }
+
+    private String inputServiceName() {
+        System.out.println("Nhập tên dịch vụ :");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_TYPE_NAME_STANDAR, "Bạn đã nhập sai địnhq dạng xin mời nhập lại !");
+    }
+
+    private String inputAreaUse() {
+        System.out.println("Diện tích sử dụng : ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_AREA_POOL_AND_AREA_USE, "Diện tích phải lớn hơn 30m2!");
+    }
+
+    private String inputRentalPrice() {
+        System.out.println("Chi phí thuê : ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_COST, "Bạn phải nhập số dương");
+    }
+
+    private String inputRentalPeopleMax() {
+        System.out.println("Nhập số lượng người tối đa: ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_AMOUNT_MAXIMUM_QUANTITY, "Số lượng người phải nhỏ hơn 20");
+    }
+
+    private String inputStyleRental() {
+        System.out.println("Kiểu thuê : ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_TYPE_NAME_STANDAR, "Nhập sai định dạng ! Vui lòng nhập lại !");
+    }
+
+    private String inputStandar() {
+        System.out.println("Tiêu chuẩn phòng: ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_TYPE_NAME_STANDAR, "Nhập sai định dạng ! Vui lòng nhập lại !");
+    }
+
+    private String inputAreaPool() {
+        System.out.println("Nhập diện tích hồ bơi: ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_AREA_POOL_AND_AREA_USE, "Diện tích hồ bơi phải lớn 30m2");
+    }
+
+    private String inputFloor() {
+        System.out.println("Số tầng: ");
+        return RegexData.regexStr(scanner.nextLine(), REGEX_FLOORS, "Nhập sai định dạng ! Vui lòng nhập lại!");
+    }
+
+    private String inputFreeService() {
+        return RegexData.regexStr(scanner.nextLine(), REGEX_TYPE_NAME_STANDAR, "Nhập sai định dạng !");
+    }
 
     @Override
     public void addNewHouse() {
 
-        System.out.println("Tên dịch vụ: ");
-        String serviceName = scanner.nextLine();
+        String id = inputIdHouse(); //id
 
-        System.out.println("Diện tích sử dụng : ");
-        double areaUse = Double.parseDouble(scanner.nextLine());
+        String serviceName = inputServiceName();//Tên dịch vụ
 
-        System.out.println("Chi phí thuê : ");
-        int rentanlPrice = Integer.parseInt(scanner.nextLine());
+        double areaUse = Double.parseDouble(inputAreaUse());//Diện tích sử dụng
 
-        System.out.println("Số lượng người tối đa : ");
-        int rentalPeopleMax = Integer.parseInt(scanner.nextLine());
+        int rentanlPrice = Integer.parseInt(inputRentalPrice());//Chi phí thuê
 
-        System.out.println("Kiểu thuê : ");
-        String styleRental = scanner.nextLine();
+        int rentalPeopleMax = Integer.parseInt(inputRentalPeopleMax()); //Số lượng người tối đa
 
-        System.out.println("Tiêu chuẩn phòng : ");
-        String standardHouse = scanner.nextLine();
+        String styleRental = inputStyleRental();
 
-        System.out.println("Số tầng : ");
-        int floorHouse = Integer.parseInt(scanner.nextLine());
+        String standardHouse = inputStandar();
 
-        House house = new House(serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, standardHouse, floorHouse);
+        int floorHouse = Integer.parseInt(inputFloor());
+
+        House house = new House(id, serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, standardHouse, floorHouse);
+
+        houseList.add(house);
         facitityIntegerMap.put(house, 0);
+
         System.out.println("Đã thêm mới thành công!");
 
     }
 
     @Override
     public void addNewRoom() {
-        System.out.println("Tên dịch vụ: ");
-        String serviceName = scanner.nextLine();
 
-        System.out.println("Diện tích sử dụng : ");
-        double areaUse = Double.parseDouble(scanner.nextLine());
+        String id = inputIdRoom();
 
-        System.out.println("Chi phí thuê : ");
-        int rentanlPrice = Integer.parseInt(scanner.nextLine());
+        String serviceName = inputServiceName();
 
-        System.out.println("Số lượng người tối đa : ");
-        int rentalPeopleMax = Integer.parseInt(scanner.nextLine());
+        double areaUse = Double.parseDouble(inputAreaUse());
 
-        System.out.println("Kiểu thuê : ");
-        String styleRental = scanner.nextLine();
+        int rentanlPrice = Integer.parseInt(inputRentalPrice());
 
-        System.out.println("Tiêu chuẩn phòng : ");
-        String freeService = scanner.nextLine();
+        int rentalPeopleMax = Integer.parseInt(inputRentalPeopleMax());
 
-        Room room = new Room(serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, freeService);
+        String styleRental = inputStyleRental();
+
+        String freeService = inputFreeService();
+
+        Room room = new Room(id, serviceName, areaUse, rentanlPrice, rentalPeopleMax, styleRental, freeService);
+        roomList.add(room);
         facitityIntegerMap.put(room, 0);
         System.out.println("Đã thêm mới thành công!");
 
     }
+
 }

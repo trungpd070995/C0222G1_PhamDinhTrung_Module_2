@@ -12,10 +12,10 @@ public class Contract {
 
     public Contract(String contractNumber, String bookingCode, String deposit, String totalPayment, String customerCode) {
         this.contractNumber = contractNumber;
-        this.bookingCode = bookingCode;
-        this.deposit = deposit;
-        this.totalPayment = totalPayment;
-        this.customerCode = customerCode;
+        this.bookingCode = bookingCode; //mã đặt chỗ
+        this.deposit = deposit; //đặt cọc
+        this.totalPayment = totalPayment; //tổng tiền thanh toán
+        this.customerCode = customerCode; //mã khách hàng
     }
 
     public String getContractNumber() {

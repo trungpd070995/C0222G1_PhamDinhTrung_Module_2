@@ -29,7 +29,7 @@ public class CustomerSeviceImpl implements CustomerService {
         String name = scanner.nextLine();
 
         System.out.println("Nhập tuổi : ");
-        int age = Integer.parseInt(scanner.nextLine());
+        String dateOfBirth = (scanner.nextLine());
 
         System.out.println("Nhập địa chỉ : ");
         String address = scanner.nextLine();
@@ -43,7 +43,7 @@ public class CustomerSeviceImpl implements CustomerService {
         System.out.println("Nhập căn cước công dân : ");
         String idCar = scanner.nextLine();
 
-        Customer customer = new Customer(id, name, age, address, gender, typeCustomer, idCar);
+        Customer customer = new Customer(id, name, dateOfBirth, address, gender, typeCustomer, idCar);
         customerList.add(customer);
         System.out.println("Đã thêm mới khách hàng!");
     }
@@ -61,7 +61,7 @@ public class CustomerSeviceImpl implements CustomerService {
                 customer.setName(scanner.nextLine());
 
                 System.out.println("Nhập tuổi : ");
-                customer.setAge(Integer.parseInt(scanner.nextLine()));
+                customer.setDateOfBirth(scanner.nextLine());
 
                 System.out.println("Nhập địa chỉ : ");
                 customer.setAddress(scanner.nextLine());
