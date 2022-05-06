@@ -69,7 +69,4 @@ public abstract class Person {
                 '}';
     }
 
-    public String getInfoEmployToCSV(){
-        return this.getId() + "," + this.getName() + "," + this.getDateOfBirth() + "," + this.getGender() + "," + this.getAddress();
-    }
 }

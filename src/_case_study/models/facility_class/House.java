@@ -31,7 +31,7 @@ public class House extends Facility {
 
     @Override
     public String toString() {
-        return "Facility{" +
+        return "House{" +
                 "id=" + this.getId() +
                 ", serviceName='" + this.getServiceName() + '\'' +
                 ", areaUse=" + this.getAreaUse() +

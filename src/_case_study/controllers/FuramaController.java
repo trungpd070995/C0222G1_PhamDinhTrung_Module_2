@@ -4,17 +4,16 @@ import _case_study.service.impl.CustomerSeviceImpl;
 import _case_study.service.impl.EmployeServiceImpl;
 import _case_study.service.impl.FacilityServiceImpl;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FuramaController {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
         displayMainMenu();
     }
 
 
-    public static void displayMainMenu() throws FileNotFoundException {
+    public static void displayMainMenu()  {
         Scanner scanner = new Scanner(System.in);
         System.out.println("-----Please select Options!------");
         while (true) {
@@ -53,24 +52,24 @@ public class FuramaController {
     }
 
 
-    public static void displayEmployeeMenu() throws FileNotFoundException {
+    public static void displayEmployeeMenu()  {
         EmployeServiceImpl employeService = new EmployeServiceImpl();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("1. Display list employees ");
-            System.out.println("2. Add new employee ");
+            System.out.println("1. Add new employee ");
+            System.out.println("2. Display list employees ");
             System.out.println("3. Edit employee ");
             System.out.println("4. Return main menu ");
 
 
             switch (scanner.nextInt()) {
                 case 1: {
-                    employeService.display();
+                    employeService.addNew();
                     break;
                 }
                 case 2: {
-                    employeService.addNew();
+                    employeService.display();
                     break;
                 }
                 case 3: {
@@ -91,18 +90,18 @@ public class FuramaController {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("1. Display list customers ");
-            System.out.println("2. Add new customers ");
+            System.out.println("1. Add new customers ");
+            System.out.println("2. Display list customers ");
             System.out.println("3. Edit customers ");
             System.out.println("4. Return main menu ");
 
             switch (scanner.nextInt()) {
                 case 1: {
-                    customerSevice.display();
+                    customerSevice.addNew();
                     break;
                 }
                 case 2: {
-                    customerSevice.addNew();
+                    customerSevice.display();
                     break;
                 }
                 case 3: {
@@ -117,23 +116,23 @@ public class FuramaController {
         }
     }
 
-    public static void displayFacilityMenu() throws FileNotFoundException {
+    public static void displayFacilityMenu()  {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("1. Display list facility ");
-            System.out.println("2. Add new facility ");
+            System.out.println("1. Add new facility");
+            System.out.println("2. Display list facility ");
             System.out.println("3. Display list facility maintenance ");
             System.out.println("4. Return main menu ");
 
             switch (scanner.nextInt()) {
                 case 1: {
-                    facilityService.display();
+                    addNewFacilityMenu();
                     break;
                 }
                 case 2: {
-                    addNewFacilityMenu();
+                    facilityService.display();
                     break;
                 }
                 case 3: {
@@ -148,7 +147,7 @@ public class FuramaController {
 
     }
 
-    public static void addNewFacilityMenu() throws FileNotFoundException {
+    public static void addNewFacilityMenu()  {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
